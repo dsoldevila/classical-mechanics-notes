@@ -1,0 +1,20 @@
+project:
+  type: book
+  output-dir: _site
+
+book:
+  title: "Classical Mechanics Notes"
+  author: "dsoldevila"
+  site-url: "https://dsoldevila.github.io/classical-mechanics-notes/"
+  chapters:
+    - index.qmd
+    - chapters/01-vectors-and-derivatives.qmd
+    - chapters/02-newtonian-mechanics.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    code-fold: show
+    highlight-style: github
