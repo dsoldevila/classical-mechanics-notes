@@ -1,0 +1,23 @@
+# Quarto build output
+_site/
+.quarto/
+
+# Manim build artifacts
+media/
+
+# Rendered videos (built locally; not versioned)
+assets/videos/*.mp4
+assets/videos/*.webm
+assets/videos/*.gif
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# uv / virtualenv
+.venv/
+
+# Editor
+.DS_Store
+*.swp

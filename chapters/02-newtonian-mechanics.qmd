@@ -1,0 +1,29 @@
+---
+title: "Newtonian Mechanics"
+---
+
+## Newton's second law
+
+$$\mathbf{F} = m\,\ddot{\mathbf{r}}$$
+
+For a simple pendulum of length $L$ and mass $m$ (small-angle approximation):
+
+$$\ddot{\theta} = -\frac{g}{L}\,\theta$$
+
+whose solution is simple harmonic motion with angular frequency
+$\omega_0 = \sqrt{g/L}$.
+
+## Pendulum animation (Manim)
+
+The animation below was produced with [Manim](https://www.manim.community/) and shows
+a simple pendulum swinging back and forth.
+
+```{=html}
+<video controls width="720" style="display:block;margin:auto;">
+  <source src="../assets/videos/pendulum.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+```
+
+> **To regenerate the video** run `./scripts/build_manim.sh` from the repo root.
+> The rendered file is saved to `assets/videos/pendulum.mp4`.

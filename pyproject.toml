@@ -1,0 +1,18 @@
+[project]
+name = "classical-mechanics-notes"
+version = "0.1.0"
+description = "Classical mechanics notes with Quarto, Python, and Manim"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.13",
+    "sympy>=1.13",
+    "matplotlib>=3.9",
+    "jupyter>=1.1",
+    "manim>=0.18",
+]
+
+[tool.uv]
+# Use `uv sync` to create/update the virtual environment.
+# Use `uv run <cmd>` to run commands inside the environment.
+dev-dependencies = []
