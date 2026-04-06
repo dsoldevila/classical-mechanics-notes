@@ -1,0 +1,18 @@
+---
+title: "Classical Mechanics Notes"
+---
+
+These are my working notes while studying classical mechanics (Susskind *The Theoretical Minimum*)
+as preparation for quantum mechanics.
+
+## How this book is built
+
+- Notes are written in Quarto (`.qmd`)
+- Computations use Python (NumPy / SciPy / SymPy)
+- Figures are generated during render (or saved under `assets/`)
+- Animations are rendered with Manim and embedded as videos
+
+## Topics covered
+
+1. Vectors and derivatives
+2. Newtonian mechanics

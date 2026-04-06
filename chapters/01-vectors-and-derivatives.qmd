@@ -1,0 +1,54 @@
+---
+title: "Vectors and Derivatives"
+---
+
+## Vectors in 2-D
+
+A vector $\mathbf{r}(t)$ traces a curve in space as $t$ varies.
+Its **velocity** is the derivative $\dot{\mathbf{r}}(t) = d\mathbf{r}/dt$.
+
+## Python example – parametric curve and velocity vectors
+
+The code below plots the Lissajous curve
+$$\mathbf{r}(t) = (\cos t,\; \sin 2t)$$
+together with numerically-computed velocity vectors sampled every few points.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 2 * np.pi, 400)
+x = np.cos(t)
+y = np.sin(2 * t)
+
+# Numerical derivative
+dt = t[1] - t[0]
+vx = np.gradient(x, dt)
+vy = np.gradient(y, dt)
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.plot(x, y, label=r"$\mathbf{r}(t)$")
+ax.quiver(
+    x[::25], y[::25],
+    vx[::25], vy[::25],
+    angles="xy", scale_units="xy", scale=10, width=0.004,
+    color="C1", label=r"$\dot{\mathbf{r}}(t)$",
+)
+ax.set_aspect("equal", "box")
+ax.set_title("Lissajous curve and velocity vectors")
+ax.grid(True, alpha=0.3)
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+## Key identities
+
+| Symbol | Meaning |
+|--------|---------|
+| $\mathbf{r}(t)$ | Position vector |
+| $\dot{\mathbf{r}}(t)$ | Velocity vector |
+| $\ddot{\mathbf{r}}(t)$ | Acceleration vector |
+
+> **Note:** In three dimensions, $\mathbf{r} = (x, y, z)$ and each component
+> is differentiated independently.

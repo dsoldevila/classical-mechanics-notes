@@ -1,0 +1,2 @@
+# placeholder – Manim-rendered videos are built locally via scripts/build_manim.sh
+# and are intentionally excluded from version control (see .gitignore).
