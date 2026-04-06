@@ -21,3 +21,6 @@ __pycache__/
 # Editor
 .DS_Store
 *.swp
+
+/.quarto/
+**/*.quarto_ipynb
