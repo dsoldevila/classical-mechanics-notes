@@ -1,0 +1,23 @@
+{
+  "name": "Classical Mechanics Notes",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  // Install all Python dependencies (numpy, scipy, sympy, matplotlib, jupyter, manim)
+  // using the lockfile for a fully reproducible environment.
+  "postCreateCommand": "uv sync",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "quarto.quarto"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python"
+      }
+    }
+  }
+}
