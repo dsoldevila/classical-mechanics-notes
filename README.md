@@ -58,16 +58,26 @@ uv run quarto preview
 The site is published to
 <https://dsoldevila.github.io/classical-mechanics-notes/> via GitHub Pages.
 
-**Manual approach** – build locally and push `_site/` to a `gh-pages` branch:
+Publishing is automated with GitHub Actions in
+`.github/workflows/publish.yml`.
 
-```bash
-quarto render
-git subtree push --prefix _site origin gh-pages
-```
+### One-time setup
 
-Then enable GitHub Pages in *Settings → Pages* pointing at the `gh-pages` branch root.
+1. Push this repository to GitHub (default branch: `main`).
+2. Open **Settings → Pages** in GitHub.
+3. Set **Source** to **GitHub Actions**.
 
-**Automated approach** – add a GitHub Actions workflow that runs
-`quarto render` and deploys `_site/`.  See the
-[Quarto GitHub Pages docs](https://quarto.org/docs/publishing/github-pages.html)
-for a ready-made workflow.
+### Regular publishing flow
+
+Every push to `main` will:
+
+1. Install dependencies (`ffmpeg`, Python packages via `uv sync`).
+2. Build Manim assets with `scripts/build_manim.sh`.
+3. Render the Quarto book.
+4. Deploy `_site/` to GitHub Pages.
+
+You can also trigger a deployment manually from the **Actions** tab
+using the `workflow_dispatch` trigger.
+
+If a deploy fails, open the `Publish Quarto Book` workflow logs in GitHub
+to inspect the failing step.
