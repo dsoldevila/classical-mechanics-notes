@@ -1,0 +1,172 @@
+---
+title: "Spaces, Trigonometry and Vectors"
+---
+
+## Vector spaces
+
+A **vector space** over $\mathbb{R}$ is a set $V$ equipped with addition and
+scalar multiplication satisfying the usual axioms.
+Common examples in classical mechanics are $\mathbb{R}^2$ (the plane) and
+$\mathbb{R}^3$ (physical 3-D space).
+
+## Trigonometric identities
+
+The unit circle links angles to Cartesian coordinates.
+For an angle $\theta$:
+
+$$\cos^2\theta + \sin^2\theta = 1$$
+
+Key compound-angle formulae:
+
+$$\cos(\alpha \pm \beta) = \cos\alpha\cos\beta \mp \sin\alpha\sin\beta$$
+$$\sin(\alpha \pm \beta) = \sin\alpha\cos\beta \pm \cos\alpha\sin\beta$$
+
+## Polynomial function
+
+Use the sliders below to configure each coefficient of
+
+$$f(t) = a\,t^4 + b\,t^3 + c\,t^2 + d\,t + e$$
+
+The defaults reproduce the original polynomial $f(t) = t^4 + 3t^3 - 12t^2 + t - 6$.
+
+```{ojs}
+viewof a = Inputs.range([-10, 10], {value: 1,   step: 0.1, label: "a  (t⁴)"})
+viewof b = Inputs.range([-10, 10], {value: 3,   step: 0.1, label: "b  (t³)"})
+viewof c = Inputs.range([-20, 20], {value: -12, step: 0.1, label: "c  (t²)"})
+viewof d = Inputs.range([-10, 10], {value: 1,   step: 0.1, label: "d  (t)"})
+viewof e = Inputs.range([-20, 20], {value: -6,  step: 0.1, label: "e  (constant)"})
+```
+
+```{ojs}
+tValues = d3.range(-5, 3.51, 0.02)
+
+plotData = tValues.map(t => ({
+  t,
+  f: a * t**4 + b * t**3 + c * t**2 + d * t + e
+}))
+
+Plot.plot({
+  width: 700,
+  height: 420,
+  grid: true,
+  x: { label: "t" },
+  y: { label: "f(t)" },
+  marks: [
+    Plot.ruleY([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.ruleX([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.line(plotData, { x: "t", y: "f", stroke: "steelblue", strokeWidth: 2 })
+  ]
+})
+```
+
+## Trigonometric function
+
+Use the sliders below to configure each coefficient of
+
+$$g(x) = p\,\sin(q\,x) + r\,\cos(s\,x)$$
+
+The defaults reproduce $g(x) = \sin(x) - \cos(x)$.
+
+```{ojs}
+viewof p = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "p  (sin amplitude)"})
+viewof q = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "q  (sin frequency)"})
+viewof r = Inputs.range([-5, 5], {value: -1, step: 0.1, label: "r  (cos amplitude)"})
+viewof s = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "s  (cos frequency)"})
+```
+
+```{ojs}
+xValues = d3.range(-2 * Math.PI, 2 * Math.PI + 0.01, 0.02)
+
+gData = xValues.map(x => ({
+  x,
+  g: p * Math.sin(q * x) + r * Math.cos(s * x)
+}))
+
+Plot.plot({
+  width: 700,
+  height: 420,
+  grid: true,
+  x: { label: "x" },
+  y: { label: "g(x)" },
+  marks: [
+    Plot.ruleY([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.ruleX([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.line(gData, { x: "x", y: "g", stroke: "tomato", strokeWidth: 2 })
+  ]
+})
+```
+
+## Exponential-logarithmic function
+
+Use the sliders below to configure each coefficient of
+
+$$\theta(\alpha) = A\,e^{B\,\alpha} + C\,\alpha\,\ln(D\,\alpha)$$
+
+The defaults reproduce $\theta(\alpha) = e^{\alpha} + \alpha\ln(\alpha)$.
+Note: the domain is restricted to $\alpha > 0$ since $\ln$ is undefined otherwise.
+
+```{ojs}
+viewof A = Inputs.range([-5, 5], {value: 1, step: 0.1, label: "A  (exp amplitude)"})
+viewof B = Inputs.range([-3, 3], {value: 1, step: 0.1, label: "B  (exp rate)"})
+viewof C = Inputs.range([-5, 5], {value: 1, step: 0.1, label: "C  (log amplitude)"})
+viewof D = Inputs.range([0.1, 5], {value: 1, step: 0.1, label: "D  (log scale)"})
+```
+
+```{ojs}
+alphaValues = d3.range(0.05, 3.01, 0.01)
+
+thetaData = alphaValues.map(alpha => ({
+  alpha,
+  theta: A * Math.exp(B * alpha) + C * alpha * Math.log(D * alpha)
+}))
+
+Plot.plot({
+  width: 700,
+  height: 420,
+  grid: true,
+  x: { label: "α" },
+  y: { label: "θ(α)" },
+  marks: [
+    Plot.ruleY([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.ruleX([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.line(thetaData, { x: "alpha", y: "theta", stroke: "seagreen", strokeWidth: 2 })
+  ]
+})
+```
+
+## Mixed trigonometric function
+
+Use the sliders below to configure each coefficient of
+
+$$x(t) = P\,\sin^2(Q\,t) - R\,\cos(S\,t)$$
+
+The defaults reproduce $x(t) = \sin^2(t) - \cos(t)$.
+
+```{ojs}
+viewof P = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "P  (sin² amplitude)"})
+viewof Q = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "Q  (sin² frequency)"})
+viewof R = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "R  (cos amplitude)"})
+viewof S = Inputs.range([-5, 5], {value:  1, step: 0.1, label: "S  (cos frequency)"})
+```
+
+```{ojs}
+xtValues = d3.range(-2 * Math.PI, 2 * Math.PI + 0.01, 0.02)
+
+xData = xtValues.map(t => ({
+  t,
+  x: P * Math.sin(Q * t) ** 2 - R * Math.cos(S * t)
+}))
+
+Plot.plot({
+  width: 700,
+  height: 420,
+  grid: true,
+  x: { label: "t" },
+  y: { label: "x(t)" },
+  marks: [
+    Plot.ruleY([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.ruleX([0], { stroke: "#333", strokeWidth: 0.8, strokeDasharray: "4,3" }),
+    Plot.line(xData, { x: "t", y: "x", stroke: "darkorange", strokeWidth: 2 })
+  ]
+})
+```

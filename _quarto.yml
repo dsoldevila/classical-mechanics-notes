@@ -10,6 +10,7 @@ book:
     - index.qmd
     - chapters/01-vectors-and-derivatives.qmd
     - chapters/02-newtonian-mechanics.qmd
+    - chapters/03-spaces-trigonometry-and-vectors.qmd
 
 format:
   html:
